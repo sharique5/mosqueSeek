@@ -1,25 +1,21 @@
-import { StyleSheet } from 'react-native';
-
+import React, {useState, useEffect} from 'react';
 import { ThemedView } from '@/components/ThemedView';
-import TestComponent from '@/components/TestComponent';
+import Home from '@/components/Home';
+import { commonStyles } from '@/stylesheets/common';
+import MosqueLists from '@/components/MosqueLists';
 
 export default function HomeScreen() {
+  const [showHome, setShowHome] = useState<boolean>(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowHome(false);
+    }, 3000)
+  }, []);
+
   return (
-    <ThemedView style={styles.titleContainer}>
-      <TestComponent />
+    <ThemedView style={commonStyles.container}>
+      {showHome ? <Home /> : <MosqueLists/>}
     </ThemedView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-    paddingTop: 2,
-    marginTop: 8,
-    backgroundColor: "red",
-    width: "100%",
-    height: "100%",
-  },
-});
