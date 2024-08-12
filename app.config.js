@@ -1,4 +1,6 @@
-{
+import 'dotenv/config';
+
+export default {
   "expo": {
     "name": "mosqueSeek",
     "slug": "mosqueSeek",
@@ -31,6 +33,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "MAP_API_KEY": process.env.MAP_API_KEY
     }
   }
 }
