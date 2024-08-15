@@ -7,11 +7,13 @@ const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY;
 
 interface IMosque {
   name: string;
+  id: string;
   location: {
     lat: number,
     lang: number,
   };
   icon: string;
+  photo: string;
   plusCode: {
     compoundCode: string,
     globalCode: string,
@@ -29,11 +31,17 @@ const MosqueLists = () => {
       })
       .then((response: any) => {
         const fetchedList = response?.results?.filter((result: any) => result.business_status === "OPERATIONAL").map((result: any) => {
+          const photoreference = result?.photos?.[0]?.photo_reference ?? "";
           return {
+            id: result.place_id,
             name: result.name,
             location: result.geometry?.location,
             icon: result.icon,
-            plusCode: result.plus_code
+            plusCode: {
+              compoundCode: result.plus_code?.compound_code,
+              globalCode: result.plus_code?.global_code,
+            },
+            photo: photoreference ? `https://maps.googleapis.com/maps/api/place/photo?photoreference=${photoreference}&maxwidth=64&key=${MAP_API_KEY}` : null,
           }
         });
         setMosqueList(fetchedList);
@@ -46,7 +54,17 @@ const MosqueLists = () => {
   
   return (
     <View>
-      <MosqueCard />
+      {mosqueList.map(mosque => {
+        return (
+          <MosqueCard 
+            key={mosque.name} 
+            name={mosque.name} 
+            distance={mosque.plusCode.globalCode} 
+            icon={mosque.icon}
+            photo={mosque.photo} 
+          />
+        )}
+        )}
       <Text>{JSON.stringify(mosqueList)}</Text>
     </View>
   );
