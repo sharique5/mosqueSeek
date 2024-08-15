@@ -25,5 +25,10 @@ export const commonStyles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  flexWrap: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
   }
 });

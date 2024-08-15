@@ -9,7 +9,7 @@ export const mosqueCardStyles = StyleSheet.create({
     height: 75,
     borderWidth: 2,
     borderRadius: 10,
-    margin: 2,
+    margin: 8,
   },
   image: {
     width: "20%",

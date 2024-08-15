@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import Constants from 'expo-constants';
 import MosqueCard from './MosqueCard';
+import { commonStyles } from '@/stylesheets/common';
 
 const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY;
 
@@ -53,7 +54,7 @@ const MosqueLists = () => {
   }, [])
   
   return (
-    <View>
+    <View style={commonStyles.flexWrap}>
       {mosqueList.map(mosque => {
         return (
           <MosqueCard 
@@ -64,8 +65,7 @@ const MosqueLists = () => {
             photo={mosque.photo} 
           />
         )}
-        )}
-      <Text>{JSON.stringify(mosqueList)}</Text>
+      )}
     </View>
   );
 }

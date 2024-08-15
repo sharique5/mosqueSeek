@@ -22,7 +22,7 @@ const MosqueCard = (props: IMosqueCardProps) => {
         />
       </View>
       <View style={mosqueCardStyles.details}>
-        <Text style={mosqueCardStyles.name}>{props?.name}</Text>
+        <Text style={mosqueCardStyles.name} numberOfLines={1} ellipsizeMode="tail">{props?.name}</Text>
         <Text style={mosqueCardStyles.distance}>{props?.distance}</Text>
       </View>
       <View style={[mosqueCardStyles.navigate, commonStyles.flexCenter]}>
