@@ -15,7 +15,10 @@ export default {
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "We need your location to provide location-based services."
+      },
     },
     "android": {
       "adaptiveIcon": {
