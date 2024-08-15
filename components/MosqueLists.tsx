@@ -1,31 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import { View } from 'react-native';
-import Constants from 'expo-constants';
 import MosqueCard from './MosqueCard';
 import { commonStyles } from '@/stylesheets/common';
+import { IMosque } from '@/interfaces/mosqueLists';
+import { MAP_API_KEY } from '@/constants/Common';
 
-const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY;
-
-interface IMosque {
-  name: string;
-  id: string;
-  location: {
-    lat: number,
-    lang: number,
-  };
-  icon: string;
-  photo: string;
-  plusCode: {
-    compoundCode: string,
-    globalCode: string,
-  };
-}
+const currentLocation = {
+  lat: -33.867052,
+  lng: 151.206108,
+};
 
 const MosqueLists = () => {
   const [mosqueList, setMosqueList] = useState<IMosque[]>([]);
 
   useEffect(() => {
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.867052,151.206108&radius=5000&keyword=mosque&key=${MAP_API_KEY}`;
+    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentLocation.lat},${currentLocation.lng}&radius=5000&keyword=mosque&key=${MAP_API_KEY}`;
     fetch(url)
       .then(response => {
         return response.json();
@@ -57,13 +46,7 @@ const MosqueLists = () => {
     <View style={commonStyles.flexWrap}>
       {mosqueList.map(mosque => {
         return (
-          <MosqueCard 
-            key={mosque.name} 
-            name={mosque.name} 
-            distance={mosque.plusCode.globalCode} 
-            icon={mosque.icon}
-            photo={mosque.photo} 
-          />
+          <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
         )}
       )}
     </View>
