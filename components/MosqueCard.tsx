@@ -3,20 +3,27 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { commonStyles } from '@/stylesheets/common';
 import { mosqueCardStyles } from '@/stylesheets/mosqueCard';
 
-const MosqueCard = () => {
+interface IMosqueCardProps {
+  name: string;
+  distance: string;
+  icon: string;
+  photo: string;
+}
+
+const MosqueCard = (props: IMosqueCardProps) => {
   return (
     <View style={[commonStyles.flexCenter, mosqueCardStyles.container]}>
       <View style={mosqueCardStyles.image}>
         <Image
           style={mosqueCardStyles.imageStyle}
           source={{
-            uri: 'https://reactnative.dev/img/tiny_logo.png',
+            uri: props?.photo ?? props?.icon ?? 'https://reactnative.dev/img/tiny_logo.png',
           }}
         />
       </View>
       <View style={mosqueCardStyles.details}>
-        <Text style={mosqueCardStyles.name}>Name goes here</Text>
-        <Text style={mosqueCardStyles.distance}>X kms</Text>
+        <Text style={mosqueCardStyles.name}>{props?.name}</Text>
+        <Text style={mosqueCardStyles.distance}>{props?.distance}</Text>
       </View>
       <View style={[mosqueCardStyles.navigate, commonStyles.flexCenter]}>
         <Ionicons name="navigate-circle-outline" size={48} color="blue" />
