@@ -4,24 +4,18 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { commonStyles } from '@/stylesheets/common';
 import { mosqueCardStyles } from '@/stylesheets/mosqueCard';
 import { IMosqueCard } from '@/interfaces/mosqueLists';
-import { MAP_API_KEY } from '@/constants/Common';
+import { ENDPOINTS } from '@/constants/Common';
+import { getDistanceBetweenCoordinates } from '@/utility/dataService';
 
 const MosqueCard = (props: IMosqueCard) => {
   const [distance, setDistance] = useState<string>("");
   const [duration, setDuration] = useState<string>("");
 
   useEffect(() => {
-    const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${props.currentLocation.lat},${props.currentLocation.lng}&destinations=${props.location.lat},${props.location.lng}&key=${MAP_API_KEY}`;
-    fetch(url)
-      .then(response => {
-        return response.json();
-      })
-      .then((response: any) => {
-        setDistance(response?.rows?.[0]?.elements?.[0]?.distance?.text);
-        setDuration(response?.rows?.[0]?.elements?.[0]?.duration?.text);
-      })
-      .catch((err) => {
-        console.log("#123 err = ", err);
+    getDistanceBetweenCoordinates(props.currentLocation, props.location)
+      .then(res => {
+        setDistance(res.distance);
+        setDuration(res.duration);
       })
   }, [])
 
@@ -31,7 +25,7 @@ const MosqueCard = (props: IMosqueCard) => {
         <Image
           style={mosqueCardStyles.imageStyle}
           source={{
-            uri: props?.photo ?? props?.icon ?? 'https://reactnative.dev/img/tiny_logo.png',
+            uri: props?.photo ?? props?.icon ?? ENDPOINTS.default,
           }}
         />
       </View>
