@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 
 export const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY;
 
-const PHOTO_MAX_WIDTH = 64;
+const PHOTO_MAX_WIDTH = 320;
 
 export const DEFAULT_LOCATION: ILocation = {
   lat: -1,

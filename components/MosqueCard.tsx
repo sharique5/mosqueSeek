@@ -30,11 +30,13 @@ const MosqueCard = (props: IMosqueCard) => {
         />
       </View>
       <View style={mosqueCardStyles.details}>
-        <Text style={mosqueCardStyles.name} numberOfLines={1} ellipsizeMode="tail">{props?.name}</Text>
-        <Text style={mosqueCardStyles.distance}>{distance}, {duration}</Text>
-      </View>
-      <View style={[mosqueCardStyles.navigate, commonStyles.flexCenter]}>
-        <Ionicons name="navigate-circle-outline" size={48} color="blue" />
+        <View style={mosqueCardStyles.nameContainer}>
+          <Text style={mosqueCardStyles.name} numberOfLines={1} ellipsizeMode="tail">{props?.name}</Text>
+          <Text style={mosqueCardStyles.distance}>{distance}, {duration}</Text>
+        </View>
+        <View style={[mosqueCardStyles.navigate, commonStyles.flexCenter]}>
+          <Ionicons name="navigate-circle-outline" size={48} color="blue" />
+        </View>
       </View>
     </View>
   );
