@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { ThemedView } from '@/components/ThemedView';
-import Home from '@/components/Home';
 import { commonStyles } from '@/stylesheets/common';
-import MosqueLists from '@/components/MosqueLists';
+import Welcome from '@/components/Welcome';
+import Home from '@/components/Home';
 
 export default function HomeScreen() {
   const [showHome, setShowHome] = useState<boolean>(true);
@@ -15,7 +15,7 @@ export default function HomeScreen() {
 
   return (
     <ThemedView style={commonStyles.container}>
-      {showHome ? <Home /> : <MosqueLists/>}
+      {showHome ? <Welcome /> : <Home />}
     </ThemedView>
   );
 }
