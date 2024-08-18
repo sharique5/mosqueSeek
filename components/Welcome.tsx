@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import { View, Animated } from "react-native";
+import { View, Animated, Text } from "react-native";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { ThemedView } from "./ThemedView";
@@ -72,7 +72,7 @@ const Welcome = () => {
           <FontAwesome5 name="search-location" size={48} color={Colors.light.text} />
         </Animated.View>
       </View>
-      <ThemedText lightColor={Colors.light.icon} style={welcomeStyles.title}>MosqueSeek</ThemedText>
+      <Text style={welcomeStyles.title}>MosqueSeek</Text>
     </ThemedView>
   )
 }

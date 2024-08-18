@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 export const welcomeStyles = StyleSheet.create({
@@ -6,8 +7,9 @@ export const welcomeStyles = StyleSheet.create({
     alignItems: "flex-start",
   },
   title: {
-    fontWeight: 600,
+    fontWeight: "bold",
     fontSize: 36,
-    textDecorationLine: "underline"
+    textDecorationLine: "underline",
+    color: Colors.light.icon,
   }
 });

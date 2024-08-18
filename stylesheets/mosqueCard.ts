@@ -24,7 +24,7 @@ export const mosqueCardStyles = StyleSheet.create({
   },
   name: {
     fontSize: 18,
-    fontWeight: 600,
+    fontWeight: "bold",
     color: Colors.light.text,
   },
   distance: {

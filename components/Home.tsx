@@ -7,12 +7,13 @@ import { Colors } from '@/constants/Colors';
 
 const Home = () => {
   return (
-    <ScrollView stickyHeaderIndices={[0]}>
-      <View style={homeStyles.header}>
-        <View>
+    <ScrollView
+      stickyHeaderIndices={[0]}
+      contentContainerStyle={homeStyles.contentContainer}
+    >
+      <View style={homeStyles.headerContainer}>
+        <View style={homeStyles.header}>
           <MaterialIcons name="mosque" size={48} color={Colors.light.background} />
-        </View>
-        <View>
           <Text style={homeStyles.headerText}>MosqueSeek</Text>
         </View>
       </View>
