@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import * as Location from 'expo-location';
 import MosqueCard from './MosqueCard';
 import { commonStyles } from '@/stylesheets/common';
@@ -7,10 +7,12 @@ import { IMosque } from '@/interfaces/mosqueLists';
 import { DEFAULT_LOCATION, MAP_API_KEY } from '@/constants/Common';
 import { ILocation } from '@/interfaces/coordinates';
 import { getMosqueList } from '@/utility/dataService';
+import { Colors } from '@/constants/Colors';
 
 const MosqueLists = () => {
   const [mosqueList, setMosqueList] = useState<IMosque[]>([]);
   const [currentLocation, setCurrentLocation] = useState<ILocation>(DEFAULT_LOCATION);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getLocation = async () => {
     // Request permission to access location
@@ -37,14 +39,20 @@ const MosqueLists = () => {
     if (currentLocation.lat === DEFAULT_LOCATION.lat) {
       return;
     }
+    setIsLoading(true);
     getMosqueList(currentLocation)
       .then((response: IMosque[]) => {
         setMosqueList(response);
       })
-      .catch(() => setMosqueList([]));
+      .catch(() => setMosqueList([]))
+      .finally(() => setIsLoading(false));
   }, [currentLocation?.lat])
   
-  return (
+  return isLoading ? (
+    <View style={commonStyles.flexWrap}>
+      <ActivityIndicator size="large" color={Colors.light.icon} />
+    </View>
+  ) : (
     <View style={commonStyles.flexWrap}>
       {mosqueList.map(mosque => {
         return (
