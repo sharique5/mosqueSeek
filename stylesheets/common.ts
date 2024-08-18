@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 export const commonStyles = StyleSheet.create({
@@ -5,6 +6,7 @@ export const commonStyles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
+    backgroundColor: Colors.light.background,
   },
   title: {
     marginTop: 16,
@@ -27,5 +29,7 @@ export const commonStyles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
   }
 });

@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import { StyleSheet } from 'react-native';
 
 export const mosqueCardStyles = StyleSheet.create({
@@ -10,6 +11,7 @@ export const mosqueCardStyles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     margin: 8,
+    borderColor: Colors.light.icon,
   },
   image: {
     width: "100%",
@@ -23,9 +25,11 @@ export const mosqueCardStyles = StyleSheet.create({
   name: {
     fontSize: 18,
     fontWeight: 600,
+    color: Colors.light.text,
   },
   distance: {
     fontSize: 12,
+    color: Colors.light.tabIconDefault,
   },
   nameContainer: {
     alignItems: "flex-start",

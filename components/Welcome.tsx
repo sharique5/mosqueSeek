@@ -6,11 +6,12 @@ import { ThemedView } from "./ThemedView";
 import { ThemedText } from "./ThemedText";
 import { commonStyles } from '@/stylesheets/common';
 import { welcomeStyles } from '@/stylesheets/welcome';
+import { Colors } from '@/constants/Colors';
 
 const Welcome = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
   const circularAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
-  var range = 1, snapshot = 50, radius = 100;
+  var range = 1, snapshot = 50, radius = 50;
   /// translateX
   var inputRange = [], outputRange = [];
   for (var i=0; i<=snapshot; ++i) {
@@ -49,7 +50,11 @@ const Welcome = () => {
   }
 
   useEffect(() => {
-    animate();
+    setTimeout(() => {
+      setTimeout(() => {
+        animate();
+      })
+    }, 2000)
   }, []);
 
   const transform = [{ translateY }, { translateX }];
@@ -61,13 +66,13 @@ const Welcome = () => {
             // ...props.style,
             opacity: fadeAnim, // Bind opacity to animated value
           }}>
-          <MaterialIcons name="mosque" size={96} color="black" />
+          <MaterialIcons name="mosque" size={96} color={Colors.light.icon} />
         </Animated.View>
         <Animated.View style={[{ transform }]}>
-          <FontAwesome5 name="search-location" size={48} color="yellow" />
+          <FontAwesome5 name="search-location" size={48} color={Colors.light.text} />
         </Animated.View>
       </View>
-      <ThemedText lightColor='#464646'>MosqueSeek</ThemedText>
+      <ThemedText lightColor={Colors.light.icon} style={welcomeStyles.title}>MosqueSeek</ThemedText>
     </ThemedView>
   )
 }

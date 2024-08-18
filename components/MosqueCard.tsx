@@ -8,6 +8,7 @@ import { IMosqueCard } from '@/interfaces/mosqueLists';
 import { ENDPOINTS } from '@/constants/Common';
 import { getDistanceBetweenCoordinates } from '@/utility/dataService';
 import { formatString } from '@/utility/strings';
+import { Colors } from '@/constants/Colors';
 
 const MosqueCard = (props: IMosqueCard) => {
   const [distance, setDistance] = useState<string>("");
@@ -49,7 +50,7 @@ const MosqueCard = (props: IMosqueCard) => {
           <Text style={mosqueCardStyles.distance}>{distance}, {duration}</Text>
         </View>
         <View style={[mosqueCardStyles.navigate, commonStyles.flexCenter]}>
-          <Ionicons name="navigate-circle-outline" size={48} color="blue" onPress={openMaps} />
+          <Ionicons name="navigate-circle-outline" size={48} color={Colors.light.icon} onPress={openMaps} />
         </View>
       </View>
     </View>
