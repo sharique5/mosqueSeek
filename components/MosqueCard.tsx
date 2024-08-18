@@ -23,12 +23,13 @@ const MosqueCard = (props: IMosqueCard) => {
   }, [])
 
   const openMaps = () => {
+    const { lat, lng } = props.location;
     const url = Platform.select({
-      ios: `maps:?q=${props?.plusCode.globalCode}`, // Apple Maps
-      android: `geo:0,0?q=${props?.plusCode.globalCode}`, // Google Maps
-      default: formatString(ENDPOINTS.navigationQuery, { plusCode: props?.plusCode.globalCode }), // Web fallback
+      ios: `maps:0,0?q=${lat},${lng}`, // Apple Maps
+      android: `geo:0,0?q=${lat},${lng}`, // Google Maps
+      default: formatString(ENDPOINTS.navigationQuery, { latitude: lat.toString(), longitude: lng.toString() }), // Web fallback
     });
-
+    
     Linking.openURL(url).catch(() => {
       Alert.alert('Error', 'Unable to open maps');
     });

@@ -15,5 +15,5 @@ export const ENDPOINTS = {
   photo: `https://maps.googleapis.com/maps/api/place/photo?photoreference={photoreference}&maxwidth=${PHOTO_MAX_WIDTH}&key=${MAP_API_KEY}`,
   distanceCalculator: `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins={originLat},{originLng}&destinations={destinationLat},{destinationLng}&key=${MAP_API_KEY}`,
   default: "https://reactnative.dev/img/tiny_logo.png",
-  navigationQuery: "https://www.google.com/maps/search/?api=1&query={plusCode}",
+  navigationQuery: "https://www.google.com/maps/search/?api=1&query={latitude},{longitude}",
 }
