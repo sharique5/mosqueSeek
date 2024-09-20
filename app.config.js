@@ -24,7 +24,9 @@ export default {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.disionix.mosqueseek",
+      "versionCode": 1,
     },
     "web": {
       "bundler": "metro",
@@ -38,7 +40,10 @@ export default {
       "typedRoutes": true
     },
     "extra": {
-      "MAP_API_KEY": process.env.MAP_API_KEY
+      "MAP_API_KEY": process.env.MAP_API_KEY,
+      "eas": {
+        "projectId": "3e300398-ca45-43cc-86ef-6f4b256c10a7"
+      }
     }
   }
 }
