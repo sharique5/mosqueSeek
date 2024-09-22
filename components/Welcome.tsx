@@ -7,6 +7,9 @@ import { ThemedText } from "./ThemedText";
 import { commonStyles } from '@/stylesheets/common';
 import { welcomeStyles } from '@/stylesheets/welcome';
 import { Colors } from '@/constants/Colors';
+import Constants from 'expo-constants';
+
+const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY || "yeh-jo-des-hai-tera";
 
 const Welcome = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
@@ -72,7 +75,7 @@ const Welcome = () => {
           <FontAwesome5 name="search-location" size={48} color={Colors.light.text} />
         </Animated.View>
       </View>
-      <Text style={welcomeStyles.title}>MosqueSeek</Text>
+      <Text style={welcomeStyles.title}>MosqueSeek - {MAP_API_KEY}</Text>
     </ThemedView>
   )
 }
