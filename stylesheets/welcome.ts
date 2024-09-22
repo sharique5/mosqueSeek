@@ -9,7 +9,7 @@ export const welcomeStyles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 36,
-    textDecorationLine: "underline",
+    textDecorationLine: "none",
     color: Colors.light.icon,
   }
 });
