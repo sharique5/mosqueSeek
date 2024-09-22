@@ -25,6 +25,11 @@ export default {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "config": {
+        "googleMaps": {
+          "apiKey": process.env.MAP_API_KEY, // Make sure this is in place
+        },
+      },
       "package": "com.disionix.mosqueseek",
       "versionCode": 1,
     },
