@@ -9,7 +9,7 @@ import { welcomeStyles } from '@/stylesheets/welcome';
 import { Colors } from '@/constants/Colors';
 import Constants from 'expo-constants';
 
-const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY || "yeh-dil-na-hota-bechara";
+const MAP_API_KEY = Constants.expoConfig?.extra?.MAP_API_KEY || "lets-see-this-time";
 
 const Welcome = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial value for opacity: 0
