@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import { View, Animated, Text } from "react-native";
+import { View, Animated, Text, Image } from "react-native";
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { ThemedView } from "./ThemedView";
@@ -72,6 +72,15 @@ const Welcome = () => {
         </Animated.View>
       </View>
       <Text style={welcomeStyles.title}>MosqueSeek</Text>
+      <View style={welcomeStyles.footer}>
+        <Text style={welcomeStyles.footerText}>
+          A product by
+        </Text>
+        <Image 
+          style={welcomeStyles.footerImage} 
+          source={require('../assets/images/splash.png')} 
+        />
+      </View>
     </ThemedView>
   )
 }
