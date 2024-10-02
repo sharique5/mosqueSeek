@@ -39,11 +39,10 @@ export const commonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   footer2: {
-    position: "relative",
-    bottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 25,
+    justifyContent: 'center',
+    flexWrap: 'wrap',
   },
   footerText: {
     fontWeight: "bold",

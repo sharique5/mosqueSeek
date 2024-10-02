@@ -65,27 +65,12 @@ const MosqueLists = () => {
         <ActivityIndicator size="large" color={Colors.light.icon} />
       </View>
     ) : (
-      <View style={commonStyles.flexCenter}>
-        <View style={commonStyles.flexWrap}>
-          {mosqueList.map(mosque => {
-            return (
-              <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
-            )}
+      <View style={commonStyles.flexWrap}>
+        {mosqueList.map(mosque => {
+          return (
+            <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
           )}
-        </View>
-        <View style={commonStyles.footer2}>
-          <Text style={commonStyles.footerText}>
-            Powered by 
-          </Text>
-          <Image 
-            style={commonStyles.footerImage} 
-            source={require('../assets/images/splash.png')} 
-          />
-          <Text style={commonStyles.footerText}>
-            {' '} Connecting You to Nearby Mosques
-          </Text>
-          
-        </View>
+        )}
       </View>
     );
 }

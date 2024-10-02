@@ -1,15 +1,15 @@
 import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, Image } from 'react-native';
 import MosqueLists from './MosqueLists';
 import { homeStyles } from '@/stylesheets/home';
 import { Colors } from '@/constants/Colors';
+import { commonStyles } from '@/stylesheets/common';
 
 const Home = () => {
   return (
-    <ScrollView
-      stickyHeaderIndices={[0]}
-      contentContainerStyle={homeStyles.contentContainer}
+    <View
+      style={homeStyles.contentContainer}
     >
       <View style={homeStyles.headerContainer}>
         <View style={homeStyles.header}>
@@ -17,10 +17,27 @@ const Home = () => {
           <Text style={homeStyles.headerText}>MosqueSeek</Text>
         </View>
       </View>
-      <View style={homeStyles.itemContainer}>
+      <ScrollView 
+        contentContainerStyle={homeStyles.itemContainer} 
+        horizontal={false} 
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={true} 
+      >
         <MosqueLists />
+      </ScrollView>
+      <View style={commonStyles.footer2}>
+        <Text style={commonStyles.footerText}>
+          Powered by 
+        </Text>
+        <Image 
+          style={commonStyles.footerImage} 
+          source={require('../assets/images/splash.png')} 
+        />
+        <Text style={commonStyles.footerText}>
+          {' '} Connecting You to Nearby Mosques
+        </Text>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
