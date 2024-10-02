@@ -26,6 +26,8 @@ export const homeStyles = StyleSheet.create({
   },
   itemContainer: {
     padding: 16,
+    height: "80%",
+    width: "100%",
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },

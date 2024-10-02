@@ -17,3 +17,11 @@ export const ENDPOINTS = {
   default: "https://reactnative.dev/img/tiny_logo.png",
   navigationQuery: "https://www.google.com/maps/search/?api=1&query={latitude},{longitude}",
 }
+
+export const HOW_TO_ENABLE_LOCATION_PERMISSION = [
+  "Open **Settings** on your Android device.",
+  "Scroll down and tap **Apps** or **Applications**.",
+  "Tap **MosqueSeek** and go to **Permissions**.",
+  "Enable the **Location** permission.",
+  "Return to MosqueSeek and try again."
+];

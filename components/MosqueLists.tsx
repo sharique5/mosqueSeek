@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { View, ActivityIndicator, Text, Image } from 'react-native';
 import * as Location from 'expo-location';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MosqueCard from './MosqueCard';
 import { commonStyles } from '@/stylesheets/common';
 import { IMosque } from '@/interfaces/mosqueLists';
-import { DEFAULT_LOCATION, MAP_API_KEY } from '@/constants/Common';
+import { DEFAULT_LOCATION, HOW_TO_ENABLE_LOCATION_PERMISSION, MAP_API_KEY } from '@/constants/Common';
 import { ILocation } from '@/interfaces/coordinates';
 import { getMosqueList } from '@/utility/dataService';
 import { Colors } from '@/constants/Colors';
+import { mosqueListStyles } from '@/stylesheets/mosqueList';
 
 const MosqueLists = () => {
   const [mosqueList, setMosqueList] = useState<IMosque[]>([]);
@@ -48,34 +50,44 @@ const MosqueLists = () => {
       .finally(() => setIsLoading(false));
   }, [currentLocation?.lat])
   
-  return isLoading ? (
-    <View style={commonStyles.flexWrap}>
-      <ActivityIndicator size="large" color={Colors.light.icon} />
-    </View>
-  ) : (
-    <View style={commonStyles.flexCenter}>
+  return currentLocation.lat === DEFAULT_LOCATION.lat ? 
+      <View style={[commonStyles.container, commonStyles.flexCenter, mosqueListStyles.container]}>
+        <FontAwesome name="chain-broken" size={48} color={Colors.light.icon} />
+        {HOW_TO_ENABLE_LOCATION_PERMISSION.map((step, index) => (
+          <View key={index} style={mosqueListStyles.item}>
+            <Text style={mosqueListStyles.number}>{index + 1}.</Text>
+            <Text style={mosqueListStyles.text}>{step}</Text>
+          </View>
+        ))}
+      </View> :
+    isLoading ? (
       <View style={commonStyles.flexWrap}>
-        {mosqueList.map(mosque => {
-          return (
-            <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
+        <ActivityIndicator size="large" color={Colors.light.icon} />
+      </View>
+    ) : (
+      <View style={commonStyles.flexCenter}>
+        <View style={commonStyles.flexWrap}>
+          {mosqueList.map(mosque => {
+            return (
+              <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
+            )}
           )}
-        )}
+        </View>
+        <View style={commonStyles.footer2}>
+          <Text style={commonStyles.footerText}>
+            Powered by 
+          </Text>
+          <Image 
+            style={commonStyles.footerImage} 
+            source={require('../assets/images/splash.png')} 
+          />
+          <Text style={commonStyles.footerText}>
+            {' '} Connecting You to Nearby Mosques
+          </Text>
+          
+        </View>
       </View>
-      <View style={commonStyles.footer2}>
-        <Text style={commonStyles.footerText}>
-          Powered by 
-        </Text>
-        <Image 
-          style={commonStyles.footerImage} 
-          source={require('../assets/images/splash.png')} 
-        />
-        <Text style={commonStyles.footerText}>
-          {' '} Connecting You to Nearby Mosques
-        </Text>
-        
-      </View>
-    </View>
-  );
+    );
 }
 
 export default MosqueLists;
