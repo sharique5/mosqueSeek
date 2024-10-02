@@ -18,15 +18,4 @@ export const welcomeStyles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  footerText: {
-    fontWeight: "bold",
-    fontSize: 16,
-    marginRight: 5,
-    color: Colors.light.icon,
-  },
-  footerImage: {
-    width: 40,
-    height: 40,
-    resizeMode: 'contain',
-  },
 });

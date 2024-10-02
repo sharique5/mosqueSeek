@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, Text, Image } from 'react-native';
 import * as Location from 'expo-location';
 import MosqueCard from './MosqueCard';
 import { commonStyles } from '@/stylesheets/common';
@@ -53,12 +53,27 @@ const MosqueLists = () => {
       <ActivityIndicator size="large" color={Colors.light.icon} />
     </View>
   ) : (
-    <View style={commonStyles.flexWrap}>
-      {mosqueList.map(mosque => {
-        return (
-          <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
+    <View style={commonStyles.flexCenter}>
+      <View style={commonStyles.flexWrap}>
+        {mosqueList.map(mosque => {
+          return (
+            <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
+          )}
         )}
-      )}
+      </View>
+      <View style={commonStyles.footer2}>
+        <Text style={commonStyles.footerText}>
+          Powered by 
+        </Text>
+        <Image 
+          style={commonStyles.footerImage} 
+          source={require('../assets/images/splash.png')} 
+        />
+        <Text style={commonStyles.footerText}>
+          {' '} Connecting You to Nearby Mosques
+        </Text>
+        
+      </View>
     </View>
   );
 }

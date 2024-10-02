@@ -31,5 +31,29 @@ export const commonStyles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
+  },
+  footer: {
+    position: "absolute",
+    bottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  footer2: {
+    position: "relative",
+    bottom: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 25,
+  },
+  footerText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginRight: 5,
+    color: Colors.light.icon,
+  },
+  footerImage: {
+    width: 40,
+    height: 40,
+    resizeMode: 'contain',
   }
 });

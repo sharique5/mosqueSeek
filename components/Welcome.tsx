@@ -72,12 +72,12 @@ const Welcome = () => {
         </Animated.View>
       </View>
       <Text style={welcomeStyles.title}>MosqueSeek</Text>
-      <View style={welcomeStyles.footer}>
-        <Text style={welcomeStyles.footerText}>
+      <View style={commonStyles.footer}>
+        <Text style={commonStyles.footerText}>
           A product by
         </Text>
         <Image 
-          style={welcomeStyles.footerImage} 
+          style={commonStyles.footerImage} 
           source={require('../assets/images/splash.png')} 
         />
       </View>
