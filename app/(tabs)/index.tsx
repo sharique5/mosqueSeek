@@ -10,7 +10,7 @@ export default function HomeScreen() {
   useEffect(() => {
     setTimeout(() => {
       setShowHome(false);
-    }, 4000)
+    }, 3000)
   }, []);
 
   return (
