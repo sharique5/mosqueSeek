@@ -3,6 +3,7 @@ import { View, ActivityIndicator, Text, Image } from 'react-native';
 import * as Location from 'expo-location';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MosqueCard from './MosqueCard';
+import Entypo from '@expo/vector-icons/Entypo';
 import { commonStyles } from '@/stylesheets/common';
 import { IMosque } from '@/interfaces/mosqueLists';
 import { DEFAULT_LOCATION, HOW_TO_ENABLE_LOCATION_PERMISSION, MAP_API_KEY } from '@/constants/Common';
@@ -15,13 +16,14 @@ const MosqueLists = () => {
   const [mosqueList, setMosqueList] = useState<IMosque[]>([]);
   const [currentLocation, setCurrentLocation] = useState<ILocation>(DEFAULT_LOCATION);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLocationDenied, setIsLocationDenied] = useState<boolean>(false);
 
   const getLocation = async () => {
     // Request permission to access location
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
       console.log("Permission to access location was denied");
-      setCurrentLocation(DEFAULT_LOCATION);
+      setIsLocationDenied(true);
       return;
     }
 
@@ -31,6 +33,8 @@ const MosqueLists = () => {
       lat: currentLocation?.coords?.latitude,
       lng: currentLocation?.coords?.longitude,
     });
+    setIsLocationDenied(false);
+    setIsLoading(true);
   };
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const MosqueLists = () => {
       .finally(() => setIsLoading(false));
   }, [currentLocation?.lat])
   
-  return currentLocation.lat === DEFAULT_LOCATION.lat ? 
+  return isLocationDenied ? 
       <View style={[commonStyles.container, commonStyles.flexCenter, mosqueListStyles.container]}>
         <FontAwesome name="chain-broken" size={48} color={Colors.light.icon} />
         {HOW_TO_ENABLE_LOCATION_PERMISSION.map((step, index) => (
@@ -66,7 +70,7 @@ const MosqueLists = () => {
       </View>
     ) : (
       <View style={commonStyles.flexWrap}>
-        {mosqueList.map(mosque => {
+        {mosqueList.length === 0 ? <Entypo name="progress-empty" size={48} color={Colors.light.icon} /> : mosqueList.map(mosque => {
           return (
             <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
           )}
