@@ -8,7 +8,6 @@ export const mosqueListStyles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     marginBottom: 5,
-    width: "25%",
   },
   number: {
     fontWeight: 'bold',
