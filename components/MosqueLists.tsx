@@ -3,7 +3,6 @@ import { View, ActivityIndicator, Text, Image } from 'react-native';
 import * as Location from 'expo-location';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MosqueCard from './MosqueCard';
-import Entypo from '@expo/vector-icons/Entypo';
 import { commonStyles } from '@/stylesheets/common';
 import { IMosque } from '@/interfaces/mosqueLists';
 import { DEFAULT_LOCATION, HOW_TO_ENABLE_LOCATION_PERMISSION, MAP_API_KEY } from '@/constants/Common';
@@ -64,13 +63,13 @@ const MosqueLists = () => {
           </View>
         ))}
       </View> :
-    isLoading ? (
+    (isLoading || mosqueList.length === 0) ? (
       <View style={commonStyles.flexWrap}>
         <ActivityIndicator size="large" color={Colors.light.icon} />
       </View>
     ) : (
       <View style={commonStyles.flexWrap}>
-        {mosqueList.length === 0 ? <Entypo name="progress-empty" size={48} color={Colors.light.icon} /> : mosqueList.map(mosque => {
+        {mosqueList.map(mosque => {
           return (
             <MosqueCard {...{...mosque, currentLocation}} key={mosque.id} />
           )}

@@ -3,22 +3,25 @@ import { StyleSheet, Platform } from 'react-native';
 
 export const homeStyles = StyleSheet.create({
   contentContainer: {
-    flexGrow: 1,
-    height: "100%",
-    maxHeight: "100%",
-    overflow: "hidden",
+    flex: 1,
   },
   headerContainer: {
     width: '100%',
-    height: '10%',
     backgroundColor: Colors.light.icon,
-    alignItems: 'center',
+    padding: 10,
     justifyContent: 'center',
+    alignItems: 'center',
+    height: 80,
+    position: 'absolute', // Make the header sticky
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1, // Ensure it stays on top of the scrollable content
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     maxWidth: Platform.OS === 'web' ? '100%' : '90%', // Ensure correct width on web
     alignSelf: 'center', // Centers header for all platforms
   },
@@ -26,13 +29,11 @@ export const homeStyles = StyleSheet.create({
     color: Colors.light.background,
     fontSize: 24,
     fontWeight: 'bold',
-    marginLeft: 8,
+    marginLeft: 10,
   },
   itemContainer: {
-    height: "88%",
-    width: "100%",
-    maxWidth: "100%",
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+    flexGrow: 1, // Ensures scroll content fills the space
+    paddingTop: 90, // Leave space for the sticky header
+    paddingBottom: 80, // Leave space for the sticky footer
   },
 });

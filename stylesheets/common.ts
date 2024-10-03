@@ -39,20 +39,30 @@ export const commonStyles = StyleSheet.create({
     alignItems: 'center',
   },
   footer2: {
+    flexWrap: 'wrap',
+    backgroundColor: Colors.light.icon,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    flexWrap: 'wrap',
+    padding: 15,
+    borderTopWidth: 1,
+    borderTopColor: '#e0e0e0',
+    height: 80,
+    position: 'absolute', // Make the footer sticky
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   footerText: {
     fontWeight: "bold",
     fontSize: 16,
     marginRight: 5,
-    color: Colors.light.icon,
+    color: Colors.light.background,
   },
   footerImage: {
-    width: 40,
-    height: 40,
+    width: 24,
+    height: 24,
+    marginHorizontal: 5,
     resizeMode: 'contain',
   }
 });
