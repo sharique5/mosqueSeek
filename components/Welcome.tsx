@@ -78,7 +78,7 @@ const Welcome = () => {
         </Text>
         <Image 
           style={commonStyles.footerImage} 
-          source={require('../assets/images/splash.png')} 
+          source={require('../assets/images/disionix-green.png')} 
         />
       </View>
     </ThemedView>

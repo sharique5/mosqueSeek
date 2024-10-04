@@ -26,14 +26,14 @@ const Home = () => {
         <MosqueLists />
       </ScrollView>
       <View style={commonStyles.footer2}>
-        <Text style={commonStyles.footerText}>
+        <Text style={commonStyles.footerText2}>
           Powered by 
         </Text>
         <Image 
           style={commonStyles.footerImage} 
-          source={require('../assets/images/splash.png')} 
+          source={require('../assets/images/disionix-white.png')} 
         />
-        <Text style={commonStyles.footerText}>
+        <Text style={commonStyles.footerText2}>
           {' '} Connecting You to Nearby Mosques
         </Text>
       </View>

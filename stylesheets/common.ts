@@ -57,6 +57,12 @@ export const commonStyles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
     marginRight: 5,
+    color: Colors.light.icon,
+  },
+  footerText2: {
+    fontWeight: "bold",
+    fontSize: 16,
+    marginRight: 5,
     color: Colors.light.background,
   },
   footerImage: {
